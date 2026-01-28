@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.mytobiidynavox.com/dynamic-docs/root-1.0.schema.json",
+  "title": "Dynamic Docs - Root Index (v1.0)",
+  "type": "object",
+  "additionalProperties": false,
+  "unevaluatedProperties": false,
+  "required": ["schemaVersion", "products"],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "products": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "indexPath"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "indexPath": {
+            "type": "string",
+            "description": "Relative path to per-product index.json (no scheme/host, no leading slash, no .., must end with /index.json).",
+            "pattern": "^(?!/)(?!.*://)(?!.*\\.\\.)((?:[a-z0-9][a-z0-9-]*/)+)index\\.json$"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["active", "retired", "deprecated"]
+          },
+          "group": {
+            "type": "string",
+            "description": "Optional grouping or taxonomy tag for categorizing products (e.g., software, hardware, accessories).",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0",
+  "id": "product-a",
+  "name": "Placeholder Product A",
+  "documents": [
+    {
+      "id": "user-manual",
+      "kind": "manual",
+      "title": {
+        "en-US": "Placeholder Product A User Manual",
+        "sv-SE": "Placeholder Product A Användarmanual"
+      },
+      "description": {
+        "en-US": "Comprehensive guide to using Placeholder Product A.",
+        "sv-SE": "En komplett guide till användning av Placeholder Product A."
+      },
+      "languages": {
+        "en-US": {
+          "pdf": "https://docs.example.com/product-a/en-US/user-manual.pdf",
+          "html": "https://docs.example.com/product-a/en-US/user-manual.html"
+        },
+        "sv-SE": {
+          "pdf": "https://docs.example.com/product-a/sv-SE/user-manual.pdf"
+        }
+      },
+      "version": "2025.1"
+    },
+    {
+      "id": "quick-start",
+      "kind": "quickstart",
+      "title": {
+        "en-US": "Quick Start Guide"
+      },
+      "languages": {
+        "en-US": {
+          "html": "https://docs.example.com/product-a/en-US/quick-start.html"
+        }
+      }
+    }
+  ]
+}

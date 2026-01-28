@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.mytobiidynavox.com/dynamic-docs/product-1.0.schema.json",
+  "title": "Dynamic Docs - Per-Product (v1.0)",
+  "type": "object",
+  "additionalProperties": false,
+  "unevaluatedProperties": false,
+  "required": ["schemaVersion", "id", "name", "documents"],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "documents": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "kind", "title", "languages"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "kind": {
+            "type": "string",
+            "enum": ["manual", "quickstart", "faq", "whitepaper", "release-notes", "installation-guide", "api-reference"],
+            "description": "Document type. Allowed values: manual, quickstart, faq, whitepaper, release-notes, installation-guide, api-reference."
+          },
+          "title": {
+            "type": "object",
+            "description": "Localized document titles. Must include en-US for fallback.",
+            "additionalProperties": false,
+            "required": ["en-US"],
+            "patternProperties": {
+              "^[a-z]{2}-[A-Z]{2}$": { "type": "string", "minLength": 1 }
+            }
+          },
+          "description": {
+            "type": "object",
+            "description": "Optional localized descriptions. If missing for a language, UI falls back to en-US, then omits.",
+            "additionalProperties": false,
+            "patternProperties": {
+              "^[a-z]{2}-[A-Z]{2}$": { "type": "string", "minLength": 1 }
+            }
+          },
+          "languages": {
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": false,
+            "patternProperties": {
+              "^[a-z]{2}-[A-Z]{2}$": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "pdf": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "^https://"
+                  },
+                  "html": {
+                    "type": ["string", "null"],
+                    "format": "uri",
+                    "pattern": "^https://"
+                  }
+                },
+                "anyOf": [
+                  { "required": ["pdf"] },
+                  { "required": ["html"] }
+                ]
+              }
+            }
+          },
+          "version": {
+            "type": "string",
+            "description": "Optional semantic/product version (e.g., 2025.2).",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}
+
