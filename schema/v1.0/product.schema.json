@@ -5,9 +5,16 @@
   "type": "object",
   "additionalProperties": false,
   "unevaluatedProperties": false,
-  "required": ["schemaVersion", "id", "name", "documents"],
+  "required": [
+    "schemaVersion",
+    "id",
+    "name",
+    "documents"
+  ],
   "properties": {
-    "schemaVersion": { "const": "1.0" },
+    "schemaVersion": {
+      "const": "1.0"
+    },
     "id": {
       "type": "string",
       "pattern": "^[a-z0-9][a-z0-9-]*$"
@@ -22,7 +29,12 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "kind", "title", "languages"],
+        "required": [
+          "id",
+          "kind",
+          "title",
+          "languages"
+        ],
         "properties": {
           "id": {
             "type": "string",
@@ -30,16 +42,28 @@
           },
           "kind": {
             "type": "string",
-            "enum": ["manual", "quickstart", "faq", "whitepaper", "release-notes", "installation-guide", "api-reference"],
+            "enum": [
+              "manual",
+              "quickstart",
+              "faq",
+              "whitepaper",
+              "release-notes",
+              "installation-guide"
+            ],
             "description": "Document type. Allowed values: manual, quickstart, faq, whitepaper, release-notes, installation-guide, api-reference."
           },
           "title": {
             "type": "object",
             "description": "Localized document titles. Must include en-US for fallback.",
             "additionalProperties": false,
-            "required": ["en-US"],
+            "required": [
+              "en-US"
+            ],
             "patternProperties": {
-              "^[a-z]{2}-[A-Z]{2}$": { "type": "string", "minLength": 1 }
+              "^[a-z]{2}-[A-Z]{2}$": {
+                "type": "string",
+                "minLength": 1
+              }
             }
           },
           "description": {
@@ -47,7 +71,10 @@
             "description": "Optional localized descriptions. If missing for a language, UI falls back to en-US, then omits.",
             "additionalProperties": false,
             "patternProperties": {
-              "^[a-z]{2}-[A-Z]{2}$": { "type": "string", "minLength": 1 }
+              "^[a-z]{2}-[A-Z]{2}$": {
+                "type": "string",
+                "minLength": 1
+              }
             }
           },
           "languages": {
@@ -65,14 +92,25 @@
                     "pattern": "^https://"
                   },
                   "html": {
-                    "type": ["string", "null"],
+                    "type": [
+                      "string",
+                      "null"
+                    ],
                     "format": "uri",
                     "pattern": "^https://"
                   }
                 },
                 "anyOf": [
-                  { "required": ["pdf"] },
-                  { "required": ["html"] }
+                  {
+                    "required": [
+                      "pdf"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "html"
+                    ]
+                  }
                 ]
               }
             }
@@ -87,4 +125,3 @@
     }
   }
 }
-
