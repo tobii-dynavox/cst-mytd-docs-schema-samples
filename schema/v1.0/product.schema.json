@@ -50,7 +50,7 @@
               "release-notes",
               "installation-guide"
             ],
-            "description": "Document type. Allowed values: manual, quickstart, faq, whitepaper, release-notes, installation-guide, api-reference."
+            "description": "Document type. Allowed values: manual, quickstart, faq, whitepaper, release-notes, installation-guide."
           },
           "title": {
             "type": "object",
