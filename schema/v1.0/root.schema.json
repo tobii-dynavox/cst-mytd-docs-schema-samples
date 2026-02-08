@@ -16,15 +16,11 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "name", "indexPath"],
+        "required": ["id", "indexPath"],
         "properties": {
           "id": {
             "type": "string",
             "pattern": "^[a-z0-9][a-z0-9-]*$"
-          },
-          "name": {
-            "type": "string",
-            "minLength": 1
           },
           "indexPath": {
             "type": "string",
@@ -45,4 +41,3 @@
     }
   }
 }
-

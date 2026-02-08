@@ -3,14 +3,12 @@
   "products": [
     {
       "id": "product-a",
-      "name": "Placeholder Product A",
       "indexPath": "product-a/index.json",
       "status": "active",
       "group": "software"
     },
     {
       "id": "product-b",
-      "name": "Placeholder Product B",
       "indexPath": "product-b/index.json",
       "status": "deprecated",
       "group": "software"
