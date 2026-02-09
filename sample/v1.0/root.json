@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0",
+  "products": [
+    {
+      "id": "product-a",
+      "indexPath": "product-a/index.json",
+      "status": "active",
+      "group": "software"
+    },
+    {
+      "id": "product-b",
+      "indexPath": "product-b/index.json",
+      "status": "deprecated",
+      "group": "software"
+    }
+  ]
+}
